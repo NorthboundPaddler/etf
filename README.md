@@ -52,6 +52,18 @@ Rather than a "Project" or "Group" field, you can use as many tags per task as y
 
 While this tool doesn't build a default way to add the tag `#Cleaning` and auto-add the other tags that you've mentally organized it under, you can always write an extension that handles this for you. It may require a definition of such heirarchy, but that's within the realm of how this tool can be used.
 
+## Configuration
+
+The configuration files are also YAML, so they are easy to read and write. The default settings locate a config in `$XDG_CONFIG_HOME` or you can create one in any directory for a local configuration in that context.
+
+The global configuration file should be at the following path: `$XDG_CONFIG_HOME/etf/etf-config.yaml`.
+
+If the `-l` or `--local` argument is used, then a local configuration will be searched for. If the current working directory is inside of a git repository, then a `.etf-config.yaml` file is expected at the root of the repository (i.e. one directory above the `.git` folder). Otherwise, if the current working directory is not inside of a git repo, then `.etf-config.yaml` is expected in the current working directory.
+
+### Syntax
+
+The configuration is written in simple YAML, and currently there's no settings to implement.
+
 ## Brain dump
 
 - Rather than implement "recurring" tasks, leave that up to users to schedule cron jobs or whatever they need.
@@ -61,7 +73,11 @@ While this tool doesn't build a default way to add the tag `#Cleaning` and auto-
 
 ## Roadmap
 
-- [ ] Read a global config file (YAML), create defaults
+- [o] Set up and read configuration/data files
+  - [X] Read a global config file (YAML), create defaults
+  - [X] Read a local config file (YAML), rolling up in working dir if it's a git repo
+  - [ ] Write an `init` command to create config, task, and completed YAML files
+  - [ ] Generate a local config file from template if missing when -l is called
 - [ ] Build CLI for `add` command
   - [ ] Serialize input to YAML
   - [ ] Write to global context "storage" file (i.e. file at known dir)
