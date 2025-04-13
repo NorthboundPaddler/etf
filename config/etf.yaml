@@ -1,0 +1,6 @@
+# Default configuration
+
+# global context filepaths. For a local context, update this. 
+# TODO: XDG_DATA_HOME is not set by default, so check if unset?
+task_data: $XDG_DATA_HOME/etf/tasks.yaml
+completed_data: $XDG_DATA_HOME/etf/completed.yaml
